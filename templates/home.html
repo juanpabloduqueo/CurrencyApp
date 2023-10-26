@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="align-center"> 
+            <strong>Currency Converter</strong>
+        </h1>
+        
+        <form action="/" method="POST" id="myform">
+            <!-- Select the currency from which to convert -->
+            <h2 class="form-label">From: </h2>
+            <p>(Please select the currency that you wish to convert. If you wish to convert a specific amount, please write it)</p>
+            <input type="number" placeholder="1" class="form-control" name="amount" min="1" value="{% if amount %}{{amount}}{% else %}1{% endif %}" required="required">
+            <select required name="convert_from" class="form-control" id="convert_from">
+                <option value="">Select currency</option>
+                <!--validate currency -->
+                {%if convert_from_name %}
+                    <option value="{{convert_from_code}}" selected>{{convert_from_name}}</option>
+                {%endif%}
+                <option value="USD">United States Dollar</option> 
+                <option value="EUR">Euro</option>
+				<option value="CNY">Chinese Yuan</option>              
+                <option value="CAD">Canadian Dollar</option>                
+				<option value="ILS">Israeli New Sheqel</option>
+				<option value="INR">Indian Rupee</option>
+                <option value="JPY">Japanese Yen</option>
+				<option value="KRW">South Korean Won</option>
+				<option value="KWD">Kuwaiti Dinar</option>
+				<option value="NZD">New Zealand Dollar</option>
+				<option value="SAR">Saudi Riyal</option>
+				<option value="CHF">Swiss Franc</option>
+
+            </select>
+            <!-- Select the currency to do the conversion -->
+            <h2 class="form-label">To: </h2>
+			<p>(Please select the currency to which you wish to convert)</p>
+            <input type="number" placeholder="Result" class="form-control" value="{{result}}" readonly>
+            <select required name="convert_to" class="form-control" id="convert_to">
+                <option value="">Choose currency</option>
+                {%if convert_to_name %}
+                    <option value="{{convert_to_code}}" selected>{{convert_to_name}}</option>
+                {%endif%}
+                <option value="BRL">Brazilian Real</option>
+                <option value="BOB">Bolivian Boliviano</option>
+                <option value="CLP">Chilean Peso</option>
+				<option value="COP">Colombian Peso</option>
+				<option value="CUP">Cuban Peso</option>
+				<option value="DOP">Dominican Peso</option>
+                <option value="MXN">Mexican Peso</option>
+				<option value="PAB">Panamanian Balboa</option>
+				<option value="PEN">Peruvian Nuevo Sol</option>
+				<option value="PYG">Paraguayan Guarani</option>
+				<option value="UYU">Uruguayan Peso</option>
+            </select>
+            <h2 style="text-align: center;">
+                <input type="submit" class="btn btn-outline-success mt-3" value="Convert">
+            </h2>
+        </form>
+        {%if time %}
+        <h4 style="color: red; text-align: center;">++ Time of last data update: {{updated_time}}</h4>
+        {%endif%}
+
+    </div>
+    
+</body>
+</html>
