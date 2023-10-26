@@ -1,6 +1,7 @@
 # CurrencyApp
 
 To start the program, go to the terminal (in my case, it's the vscode powershell terminal for windows).
+
 activate the python virtual environment: .venv\Scripts\activate
 
 **** if there are problems activating the Virtual Environment write this:
