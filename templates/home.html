@@ -26,6 +26,7 @@
                 {%endif%}
                 <option value="USD">United States Dollar</option> 
                 <option value="EUR">Euro</option>
+                <option value="GBP">British Pound Sterling</option>                
 				<option value="CNY">Chinese Yuan</option>              
                 <option value="CAD">Canadian Dollar</option>                
 				<option value="ILS">Israeli New Sheqel</option>
@@ -35,13 +36,14 @@
 				<option value="KWD">Kuwaiti Dinar</option>
 				<option value="NZD">New Zealand Dollar</option>
 				<option value="SAR">Saudi Riyal</option>
+
 				<option value="CHF">Swiss Franc</option>
 
             </select>
             <!-- Select the currency to do the conversion -->
             <h2 class="form-label">To: </h2>
 			<p>(Please select the currency to which you wish to convert)</p>
-            <input type="number" placeholder="Result" class="form-control" value="{{result}}" readonly>
+            <input type="number" placeholder="Result" class="form-control" value="{{ result }}" readonly>
             <select required name="convert_to" class="form-control" id="convert_to">
                 <option value="">Choose currency</option>
                 {%if convert_to_name %}
@@ -63,8 +65,8 @@
                 <input type="submit" class="btn btn-outline-success mt-3" value="Convert">
             </h2>
         </form>
-        {%if time %}
-        <h4 style="color: red; text-align: center;">++ Time of last data update: {{updated_time}}</h4>
+        {%if updated_time %}
+        <h4 style="color: green; text-align: center;">++ Last data update (UTC time): {{updated_time}} ++</h4>
         {%endif%}
 
     </div>

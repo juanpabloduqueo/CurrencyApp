@@ -1,7 +1,9 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import requests
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app) # This will enable CORS for all routes
 API_KEY = 'DM958STFT5HQABRF'
 
 # This is a template format of the json query
@@ -48,5 +50,20 @@ def home():
     else:
         return render_template('home.html')
     
+######################################################################
+# This is testing code to send USDCOP exchange rate to another program
+
+@app.route('/get_exchange_rate', methods=['GET'])
+def get_exchange_rate():
+    # request exchange rate data
+    url = f'https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=USD&to_currency=COP&apikey={API_KEY}'
+    response = requests.get(url).json()
+    exchange_rate = response['Realtime Currency Exchange Rate']['5. Exchange Rate']
+    
+    # return the exchange rate as JSON
+    return jsonify({'usd_cop_exchange_rate': exchange_rate})
+
+
+
 if __name__ == '__main__':
     app.run(debug=True) 
