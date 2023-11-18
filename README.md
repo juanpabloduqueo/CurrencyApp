@@ -28,6 +28,7 @@ http://localhost:5000/get_exchange_rate?origin={origin}&destination={destination
 example:
 
 The url to request data to convert 10000000 GBP to COP would be:
+
 http://localhost:5000/get_exchange_rate?origin=GBP&destination=COP&quantity=10000000
 
 ### how to programmatically RECEIVE data from the microservice
