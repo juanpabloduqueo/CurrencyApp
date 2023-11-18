@@ -1,4 +1,4 @@
-# CurrencyApp
+## CurrencyApp
 
 To start the program, go to the terminal (in my case, it's the vscode powershell terminal for windows).
 
