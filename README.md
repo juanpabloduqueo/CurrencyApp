@@ -33,6 +33,7 @@ http://localhost:5000/get_exchange_rate?origin=GBP&destination=COP&quantity=1000
 
 ### how to programmatically RECEIVE data from the microservice
 following the given example, the data received (JSON) would be:
+
 {
   "from_currency": "GBP",
   "quantity": 10000000.0,
