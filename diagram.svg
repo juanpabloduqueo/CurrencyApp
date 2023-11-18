@@ -1,0 +1,11 @@
+@startuml
+
+user -> currencyApp: Send HTTP request to get exchange rate
+create forexAPI
+currencyApp -> forexAPI: Get exchange rate
+forexAPI -> currencyApp: Return exchange rate
+destroy forexAPI 
+currencyApp -> user: Return exchange rate
+destroy currencyApp
+
+@enduml
