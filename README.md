@@ -42,4 +42,6 @@ following the given example, the data received (JSON) would be:
 }
 
 ### UML sequence diagram showing how requesting and receiving data works
+![alt text](https://github.com/juanpabloduqueo/CurrencyApp/uml_img.jpg?raw=true)
 
+https://github.com/juanpabloduqueo/CurrencyApp/blob/main/image.jpg?raw=true
