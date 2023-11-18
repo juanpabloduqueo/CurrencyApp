@@ -44,3 +44,20 @@ following the given example, the data received (JSON) would be:
 ### UML sequence diagram showing how requesting and receiving data works
 ![UML_Diagram](https://github.com/juanpabloduqueo/CurrencyApp/blob/main/uml_img.jpg?raw=true)
 
+<div hidden>
+```
+@startuml diagram
+
+user -> currencyApp: Send HTTP request to get exchange rate
+create forexAPI
+currencyApp -> forexAPI: Get exchange rate
+forexAPI -> currencyApp: Return exchange rate
+destroy forexAPI 
+currencyApp -> user: Return exchange rate
+destroy currencyApp
+		
+@enduml
+```
+</div>
+
+![](diagram.svg)
