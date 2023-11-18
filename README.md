@@ -44,7 +44,7 @@ following the given example, the data received (JSON) would be:
 ### UML sequence diagram showing how requesting and receiving data works
 ![UML_Diagram](https://github.com/juanpabloduqueo/CurrencyApp/blob/main/uml_img.jpg?raw=true)
 
-<div hidden>
+<!--
 ```
 @startuml diagram
 
@@ -58,6 +58,6 @@ destroy currencyApp
 		
 @enduml
 ```
-</div>
+-->
 
 ![](diagram.svg)
