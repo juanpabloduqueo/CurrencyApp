@@ -25,6 +25,8 @@ or (since quantity is optional):
 
 http://localhost:5000/get_exchange_rate?origin={origin}&destination={destination}
 
+* The parameters (origin, destination, quantity) must be written exactly as in the example.
+
 example:
 
 The url to request data to convert 10000000 GBP to COP would be:
