@@ -62,7 +62,7 @@ def home():
 
     
 ######################################################################
-# THIS IS THE ENDPOINT TO CONNECT TO THIS APP AS A MICROSERVICE#
+# THIS IS THE ENDPOINT TO CONNECT TO THIS APP AS A MICROSERVICE
 
 @app.route('/get_exchange_rate', methods=['GET'])
 def get_exchange_rate():
