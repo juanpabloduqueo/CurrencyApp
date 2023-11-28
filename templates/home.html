@@ -60,6 +60,126 @@
 				<option value="PYG">Paraguayan Guarani</option>
 				<option value="UYU">Uruguayan Peso</option>
             </select>
+
+            <!-- Select stock ticker -->
+            <h2 class="form-label">Stock Ticker: </h2>
+            <select required name="stock_ticker" class="form-control" id="stock_ticker">
+                <option value="">Choose Stock Ticker</option>
+                {%if stock_ticker %}
+                    <option value="{{stock_ticker}}" selected>{{stock_ticker}}</option>
+                {%endif%}
+                <option value="">Select stock</option>
+                <option value="AMZN">Amazon (AMZN)</option>
+                <option value="MSFT">Microsoft (MSFT)</option>
+                <option value="AAPL">Apple (AAPL)</option>
+                <option value="MSFT">Microsoft (MSFT)</option>
+                <option value="GOOGL">Alphabet (GOOGL)</option>
+                <option value="AMZN">Amazon (AMZN)</option>
+                <option value="NVDA">NVIDIA (NVDA)</option>
+                <option value="META">Meta Platforms (META)</option>
+                <option value="TSLA">Tesla (TSLA)</option>
+                <option value="BRK.B">Berkshire Hathaway (BRK.B)</option>
+                <option value="LLY">Eli Lilly (LLY)</option>
+                <option value="V">Visa (V)</option>
+                <option value="TSM">TSMC (TSM)</option>
+                <option value="UNH">UnitedHealth (UNH)</option>
+                <option value="AVGO">Broadcom (AVGO)</option>
+                <option value="NVO">Novo Nordisk (NVO)</option>
+                <option value="JPM">JPMorgan Chase (JPM)</option>
+                <option value="WMT">Walmart (WMT)</option>
+                <option value="XOM">Exxon Mobil (XOM)</option>
+                <option value="MA">Mastercard (MA)</option>
+                <option value="JNJ">Johnson &amp; Johnson (JNJ)</option>
+                <option value="PG">Procter &amp; Gamble (PG)</option>
+                <option value="ORCL">Oracle (ORCL)</option>
+                <option value="HD">Home Depot (HD)</option>
+                <option value="ADBE">Adobe (ADBE)</option>
+                <option value="CVX">Chevron (CVX)</option>
+                <option value="ASML">ASML (ASML)</option>
+                <option value="COST">Costco (COST)</option>
+                <option value="MRK">Merck (MRK)</option>
+                <option value="KO">Coca-Cola (KO)</option>
+                <option value="TM">Toyota (TM)</option>
+                <option value="ABBV">AbbVie (ABBV)</option>
+                <option value="BAC">Bank of America (BAC)</option>
+                <option value="PEP">PepsiCo (PEP)</option>
+                <option value="FMX">Fomento Económico Mexicano (FMX)</option>
+                <option value="CRM">Salesforce (CRM)</option>
+                <option value="SHEL">Shell (SHEL)</option>
+                <option value="NFLX">Netflix (NFLX)</option>
+                <option value="ACN">Accenture (ACN)</option>
+                <option value="MCD">McDonald's (MCD)</option>
+                <option value="NVS">Novartis (NVS)</option>
+                <option value="LIN">Linde (LIN)</option>
+                <option value="AMD">AMD (AMD)</option>
+                <option value="AZN">AstraZeneca (AZN)</option>
+                <option value="BABA">Alibaba (BABA)</option>
+                <option value="CSCO">Cisco (CSCO)</option>
+                <option value="TMO">Thermo Fisher Scientific (TMO)</option>
+                <option value="INTC">Intel (INTC)</option>
+                <option value="PDD">Pinduoduo (PDD)</option>
+                <option value="SAP">SAP (SAP)</option>
+                <option value="ABT">Abbott Laboratories (ABT)</option>
+                <option value="TMUS">T-Mobile US (TMUS)</option>
+                <option value="CMCSA">Comcast (CMCSA)</option>
+                <option value="PFE">Pfizer (PFE)</option>
+                <option value="NKE">Nike (NKE)</option>
+                <option value="DIS">Disney (DIS)</option>
+                <option value="TTE">TotalEnergies (TTE)</option>
+                <option value="DHR">Danaher (DHR)</option>
+                <option value="INTU">Intuit (INTU)</option>
+                <option value="VZ">Verizon (VZ)</option>
+                <option value="WFC">Wells Fargo (WFC)</option>
+                <option value="BHP">BHP Group (BHP)</option>
+                <option value="HDB">HDFC Bank (HDB)</option>
+                <option value="HSBC">HSBC (HSBC)</option>
+                <option value="PM">Philip Morris (PM)</option>
+                <option value="PRX.AS">Prosus (PRX.AS)</option>
+                <option value="IBM">IBM (IBM)</option>
+                <option value="AMGN">Amgen (AMGN)</option>
+                <option value="QCOM">Qualcomm (QCOM)</option>
+                <option value="TXN">Texas Instruments (TXN)</option>
+                <option value="COP">ConocoPhillips (COP)</option>
+                <option value="NOW">ServiceNow (NOW)</option>
+                <option value="UNP">Union Pacific (UNP)</option>
+                <option value="BA">Boeing (BA)</option>
+                <option value="SPGI">S&P Global (SPGI)</option>
+                <option value="BX">Blackstone (BX)</option>
+                <option value="GE">General Electric (GE)</option>
+                <option value="UPS">United Parcel Service (UPS)</option>
+                <option value="HON">Honeywell (HON)</option>
+                <option value="MS">Morgan Stanley (MS)</option>
+                <option value="CAT">Caterpillar (CAT)</option>
+                <option value="BUD">Anheuser-Busch Inbev (BUD)</option>
+                <option value="AMAT">Applied Materials (AMAT)</option>
+                <option value="AXP">American Express (AXP)</option>
+                <option value="RY">Royal Bank of Canada (RY)</option>
+                <option value="UL">Unilever (UL)</option>
+                <option value="NEE">NextEra Energy (NEE)</option>
+                <option value="SNY">Sanofi (SNY)</option>
+                <option value="T">AT&T (T)</option>
+                <option value="UBER">Uber Technologies (UBER)</option>
+                <option value="LOW">Lowe's (LOW)</option>
+                <option value="RTX">RTX Corp (RTX)</option>
+                <option value="SBUX">Starbucks (SBUX)</option>
+                <option value="RIO">Rio Tinto (RIO)</option>
+                <option value="ELV">Elevance Health (ELV)</option>
+                <option value="LMT">Lockheed Martin (LMT)</option>
+                <option value="SYK">Stryker (SYK)</option>
+                <option value="TD">Toronto-Dominion Bank (TD)</option>
+                <option value="GS">Goldman Sachs (GS)</option>
+                <option value="BKNG">Booking Holdings (BKNG)</option>
+                <option value="BLK">BlackRock (BLK)</option>
+                <option value="ISRG">Intuitive Surgical (ISRG)</option>
+                <option value="SONY">Sony Group (SONY)</option>
+            </select>
+
+            <!-- Display the lowest day price for the selected stock -->
+            {% if day_low_stock %}
+                <h2 class="form-label">Lowest price for the day:</h2>
+                <input type="number" placeholder="Lowest Day Price" class="form-control" value="{{ day_low_stock }}" readonly>
+            {% endif %}
+
             <h2 style="text-align: center;">
                 <input type="submit" class="btn btn-outline-success mt-3" value="Convert">
             </h2>
