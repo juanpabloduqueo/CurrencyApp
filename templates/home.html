@@ -175,10 +175,8 @@
             </select>
 
             <!-- Display the lowest day price for the selected stock -->
-            {% if day_low_stock %}
-                <h2 class="form-label">Lowest price for the day:</h2>
-                <input type="number" placeholder="Lowest Day Price" class="form-control" value="{{ day_low_stock }}" readonly>
-            {% endif %}
+            <h2 class="form-label">Lowest price for the day:</h2>
+            <input type="number" placeholder="Lowest Day Price" class="form-control" value="{{ day_low_stock }}" readonly>
 
             <h2 style="text-align: center;">
                 <input type="submit" class="btn btn-outline-success mt-3" value="Convert">
