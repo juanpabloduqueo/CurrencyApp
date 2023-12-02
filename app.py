@@ -3,11 +3,16 @@ import requests
 from flask_cors import CORS
 from random import randint
 import json
+from externalService import get_stock_prices
+from internalService import get_exchange_data
+from dotenv import load_dotenv
+import os
 
+# Load environment variables from .env file
+load_dotenv()
 app = Flask(__name__)
+API_KEY = os.environ.get('API_KEY')
 CORS(app) # This will enable CORS for all routes
-# API_KEY = 'DM958STFT5HQABRF'
-API_KEY = 'DXIHMRE7OY5Y70DK'
 
 # This is a template format of the json query
 @app.route('/docs', methods=['GET'])
@@ -21,64 +26,26 @@ def docs():
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
-        # Use try and except to handle errors and avoid app crashing
-        # get the request from home.html 
-        
-        amount = request.form['amount']
-        amount = float(amount) # convert to float - display decimals
-        
-        # get the requests from home.html
-        
+        amount = float(request.form['amount'])
         convert_from = request.form['convert_from'] 
         convert_to = request.form['convert_to']
-        
-        # request data to api with selected currencies
-        
-        url = f'https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency={convert_from}&to_currency={convert_to}&apikey={API_KEY}'
-        response = requests.get(url).json()
-        
-        # get the exchange rate from the json response
-        
-        Exchange_Rate = response['Realtime Currency Exchange Rate']['5. Exchange Rate']
-        Exchange_Rate = float(Exchange_Rate) # convert to float - display decimals
-        
-        # calculate the conversion
-        result = amount * Exchange_Rate
-        
-        # assign variables to other responses
-        convert_from_code = response['Realtime Currency Exchange Rate']['1. From_Currency Code']
-        convert_from_name = response['Realtime Currency Exchange Rate']['2. From_Currency Name']
-        convert_to_code = response['Realtime Currency Exchange Rate']['3. To_Currency Code']
-        convert_to_name = response['Realtime Currency Exchange Rate']['4. To_Currency Name']
-        updated_time = response['Realtime Currency Exchange Rate']['6. Last Refreshed']
-        
-        ###################### This is my partner's microservice part ######################
+        (result, from_code, from_name, to_code, to_name, updated_time) = get_exchange_data(amount, convert_to, convert_from, API_KEY) 
+
+        ###################### This is my partner's microservice part #####################
         stock_ticker = request.form['stock_ticker']
-    
-        # request stock data to API
-        url_stock = 'http://localhost:5001/api/processJSON'
-        data_stock = {'stocks': stock_ticker}
-    
-        try:
-            response_stock = requests.post(url_stock, json=data_stock, headers={'Content-Type': 'application/json'})
-            result_stock = response_stock.json()
-            day_low_stock = result_stock['data'][0]['day.l']
-        except Exception as error:
-            print('Error:', error)
+        (day_low_stock, day_high_stock) = get_stock_prices(stock_ticker)
+        ###################### End of my partner's microservice part ######################      
         
-        ###################### End of my partner's microservice part ######################
-        
-        return render_template('home.html', result=round(result, 2), amount=amount, 
-                            convert_from_code=convert_from_code, convert_from_name=convert_from_name, 
-                            convert_to_code=convert_to_code, convert_to_name=convert_to_name, 
-                            updated_time=updated_time, day_low_stock=day_low_stock, stock_ticker=stock_ticker)  
+        return render_template('home.html', amount=amount, result=result,
+                            convert_from_code=from_code, convert_from_name=from_name, 
+                            convert_to_code=to_code, convert_to_name=to_name, 
+                            updated_time=updated_time, day_low_stock=day_low_stock, 
+                            day_high_stock=day_high_stock,stock_ticker=stock_ticker)  
     else:
         return render_template('home.html')
-
     
-######################################################################
-# THIS IS THE ENDPOINT TO CONNECT TO THIS APP AS A MICROSERVICE
-
+############################################################################################################
+# This is the endpoint to connect to this app as a microservice
 @app.route('/get_exchange_rate', methods=['GET'])
 def get_exchange_rate():
     # request exchange rate data
@@ -107,12 +74,6 @@ def get_exchange_rate():
     return jsonify({'from_currency': origin, 'to_currency': destination, 'quantity': quantity,'result': str(result)})
 
 ##########################################################
-# To connect to my partner's microservice:
-
-#@app.route('/get_stock_data', methods=['POST'])
-# def get_stock_data():
-
-    
     
 if __name__ == '__main__':
     app.run(debug=True) 

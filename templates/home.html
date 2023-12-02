@@ -17,7 +17,7 @@
             <!-- Select the currency from which to convert -->
             <h2 class="form-label">From: </h2>
             <p>(Please select the currency that you wish to convert. If you wish to convert a specific amount, please write it)</p>
-            <input type="number" placeholder="1" class="form-control" name="amount" min="1" value="{% if amount %}{{amount}}{% else %}1{% endif %}" required="required">
+            <input type="number" placeholder="1" class="form-control" name="amount" min="1" step="0.01" value="{% if amount %}{{amount}}{% else %}1{% endif %}" required="required">
             <select required name="convert_from" class="form-control" id="convert_from">
                 <option value="">Select currency</option>
                 <!--validate currency -->
@@ -61,9 +61,12 @@
 				<option value="UYU">Uruguayan Peso</option>
             </select>
 
+            <h1 class="align-center"> 
+                <strong>Basic Stock Info Service</strong>
+            </h1>
             <!-- Select stock ticker -->
             <h2 class="form-label">Stock Ticker: </h2>
-            <select required name="stock_ticker" class="form-control" id="stock_ticker">
+            <select name="stock_ticker" class="form-control" id="stock_ticker">
                 <option value="">Choose Stock Ticker</option>
                 {%if stock_ticker %}
                     <option value="{{stock_ticker}}" selected>{{stock_ticker}}</option>
@@ -175,11 +178,15 @@
             </select>
 
             <!-- Display the lowest day price for the selected stock -->
-            <h2 class="form-label">Lowest price for the day:</h2>
+            <h2 class="form-label">Today's Lowest Price (USD):</h2>
             <input type="number" placeholder="Lowest Day Price" class="form-control" value="{{ day_low_stock }}" readonly>
 
+            <!-- Display the highest day price for the selected stock -->
+            <h2 class="form-label">Today's Highest Price (USD):</h2>
+            <input type="number" placeholder="Highest Day Price" class="form-control" value="{{ day_high_stock }}" readonly>
+
             <h2 style="text-align: center;">
-                <input type="submit" class="btn btn-outline-success mt-3" value="Convert">
+                <input type="submit" class="btn btn-outline-success mt-3" value="Gimme the Info!">
             </h2>
         </form>
         {%if updated_time %}
